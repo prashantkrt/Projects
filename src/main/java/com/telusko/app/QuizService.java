@@ -1,5 +1,7 @@
 package main.java.com.telusko.app;
 
+import java.util.Scanner;
+
 public class QuizService {
 
 //    Question question1 = new Question(1,"size of int","2","6","4","8","4");
@@ -19,13 +21,22 @@ public class QuizService {
     }
 
     public void playQuiz() {
+        Scanner sc = new Scanner(System.in);        
+        int result =0;
         for (Question q : questions) {
             System.out.println(q.getQid() + "." + q.getTitle());
             System.out.println("i) " + q.getOption1());
             System.out.println("ii) " + q.getOption2());
             System.out.println("iii) " + q.getOption3());
             System.out.println("iv) " + q.getOption4());
+            String option="";
+            System.out.println("choose the options");
+            option = sc.next(); 
+            String ans = q.getAnswer(); 
+            if(option.equals(ans))
+            result++;
         }
-
+        sc.close();
+        System.out.println("The marks obtained  "+result);
     }
 }
